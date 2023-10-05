@@ -1,4 +1,4 @@
-import { Form, notification } from "antd";
+import { App, Form } from "antd";
 import { formItems } from "./constants.tsx";
 import { Api } from "@services";
 import { useForm } from "antd/es/form/Form";
@@ -9,6 +9,7 @@ import routes from "@routes";
 const RegisterPage = () => {
   const [form] = useForm();
   const navigate = useNavigate();
+  const { notification } = App.useApp();
 
   const onFinish = async (data: UserRegisterType): Promise<void> => {
     const response = await Api.auth.register(data);

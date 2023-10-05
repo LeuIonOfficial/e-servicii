@@ -3,7 +3,7 @@ import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider } from "react-router-dom";
 import router from "./navigation";
-import { ConfigProvider } from "antd";
+import { App, ConfigProvider } from "antd";
 
 const queryClient = new QueryClient();
 
@@ -17,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         },
       }}
     >
-      <RouterProvider router={router} />
+      <App>
+        <RouterProvider router={router} />
+      </App>
     </ConfigProvider>
   </QueryClientProvider>,
 );

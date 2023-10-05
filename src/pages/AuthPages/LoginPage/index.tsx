@@ -1,4 +1,4 @@
-import { Form, notification } from "antd";
+import { App, Form } from "antd";
 import { formItems } from "./constants.tsx";
 import { Api } from "@services";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,8 @@ import routes from "@routes";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { notification } = App.useApp();
+
   const onFinish = async (data: { email: string; password: string }) => {
     const response = await Api.auth.login(data);
 
