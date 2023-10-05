@@ -13,7 +13,13 @@ export const formItems = [
       <Form.Item
         label="E-mail"
         name="email"
-        rules={[{ required: true, message: "Please input your E-mail!" }]}
+        rules={[
+          { required: true, message: "Please input your E-mail!" },
+          {
+            type: "email",
+            message: "The input is not valid E-mail!",
+          },
+        ]}
       >
         <Input />
       </Form.Item>
