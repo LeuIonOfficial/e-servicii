@@ -13,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       theme={{
         token: {
           fontFamily: "Montserrat, sans-serif",
+          colorPrimary: "#2979FF",
         },
       }}
     >

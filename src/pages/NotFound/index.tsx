@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button, Result } from "antd";
-import routes from "@routes/index.ts";
+import routes from "@routes";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const NotFound = () => {
           <Button
             type="primary"
             onClick={() => navigate(routes.authenticated.root)}
-            className="bg-blue-500"
+            className="bg-blue-400"
           >
             Back Home
           </Button>
