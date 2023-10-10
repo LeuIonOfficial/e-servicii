@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import routes from "@routes";
 import { NonAuthLayout, AuthLayout } from "@layouts";
 import { HomePage, NotFound, Dashboard, LoginPage, RegisterPage } from "@pages";
+import { ProfileInfo, BusinessInfo } from "../pages/About";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: routes.authenticated.dashboard,
         element: <Dashboard />,
+      },
+      {
+        path: routes.authenticated.about.user,
+        element: <ProfileInfo />,
+      },
+      {
+        path: routes.authenticated.about.business,
+        element: <BusinessInfo />,
       },
     ],
   },

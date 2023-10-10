@@ -9,6 +9,7 @@ const storageKeyAccessToken = "access_token";
 
 export default class AuthService {
   private accessToken: string;
+
   constructor() {
     this.accessToken = localStorage.getItem(storageKeyAccessToken) ?? "";
   }
@@ -32,6 +33,7 @@ export default class AuthService {
   }
 
   async logout() {
+    await $api.get("/user/logout");
     this.accessToken = "";
     localStorage.removeItem(storageKeyAccessToken);
   }

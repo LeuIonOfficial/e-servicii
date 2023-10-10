@@ -5,4 +5,12 @@ export interface UserType {
   created_at: string;
   updated_at: string;
   deleted_at: null;
+  role: string;
+  businesses: BusinessType[];
+}
+
+export interface BusinessType {
+  name: string;
+  description: string;
+  phone: string;
 }

@@ -15,7 +15,7 @@ const LoginPage = () => {
       notification.success({
         message: `Welcome ${data.email}`,
       });
-      navigate(routes.authenticated.root);
+      navigate(routes.authenticated.dashboard);
     }
     if (response.status === 400 || response.status === 404) {
       notification.error({

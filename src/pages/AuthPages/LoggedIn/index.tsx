@@ -1,37 +1,28 @@
-import { FC, ReactNode, useContext } from "react";
+import { FC, ReactNode } from "react";
 import { Content } from "antd/es/layout/layout";
-import { Button, Layout } from "antd";
-import Sider from "antd/es/layout/Sider";
-import { Api } from "@services";
-import { UserContext } from "@store";
-import { useNavigate } from "react-router-dom";
-import routes from "@routes";
+import { Layout, theme } from "antd";
+import AuthSider from "./Sider";
+import CustomHeader from "./Header";
 
 const LoggedIn: FC<{ children: ReactNode }> = ({ children }) => {
-  const user = useContext(UserContext);
-  const navigate = useNavigate();
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <Layout>
-      <Sider
-        className="h-[100vh] p-5 child:flex child:flex-col child:justify-between child:items-center"
-        style={{ backgroundColor: "#fff" }}
-      >
-        <div>Logo for {user?.name}</div>
-        <div>Menu</div>
-        <div>
-          <Button
-            type="text"
-            onClick={async () => {
-              await Api.auth.logout();
-              navigate(routes.home);
-            }}
-          >
-            Logout
-          </Button>
-        </div>
-      </Sider>
+    <Layout className="h-[100vh]">
+      <AuthSider />
       <Layout>
-        <Content>{children}</Content>
+        <CustomHeader />
+        <Content
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer,
+          }}
+        >
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );

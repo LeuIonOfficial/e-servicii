@@ -2,22 +2,22 @@ import { Api } from "@services";
 import { useQuery } from "react-query";
 
 const useGetProfile = () => {
-  const query = () => Api.profile.getProfile();
+  const query = async () => Api.profile.getProfile();
 
   const {
-    isLoading,
-    data: profile,
     isSuccess,
-  } = useQuery(["profile"], query, {
+    data: profile,
+    isFetching,
+  } = useQuery(["user"], query, {
     select: (response) => {
       return response.data;
     },
   });
 
   return {
-    isLoading,
-    profile,
     isSuccess,
+    profile,
+    isFetching,
   };
 };
 export default useGetProfile;

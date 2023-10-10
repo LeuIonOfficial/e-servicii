@@ -7,7 +7,17 @@ import { LoggedIn } from "@pages";
 import { UserContext } from "@store";
 
 const AuthLayout = () => {
-  const { profile, isLoading, isSuccess } = useGetProfile();
+  const { profile, isSuccess, isFetching } = useGetProfile();
+  console.log(profile);
+
+  if (isFetching) {
+    return (
+      <div className="w-full h-[100vh] flex flex-col items-center justify-center">
+        <Spin size="large" />
+        <h1 className="mt-5 text-blue-600">Loading...</h1>
+      </div>
+    );
+  }
 
   if (isSuccess) {
     return (
@@ -16,14 +26,6 @@ const AuthLayout = () => {
           <Outlet />
         </LoggedIn>
       </UserContext.Provider>
-    );
-  }
-  if (isLoading) {
-    return (
-      <div className="w-full h-[100vh] flex flex-col items-center justify-center">
-        <Spin size="large" />
-        <h1 className="mt-5 text-blue-600">Loading...</h1>
-      </div>
     );
   }
 

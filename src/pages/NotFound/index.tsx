@@ -13,7 +13,7 @@ const NotFound = () => {
         extra={
           <Button
             type="primary"
-            onClick={() => navigate(routes.authenticated.root)}
+            onClick={() => navigate(routes.authenticated.dashboard)}
             className="bg-blue-400"
           >
             Back Home

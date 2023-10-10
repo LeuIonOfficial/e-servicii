@@ -1,11 +1,16 @@
 const authenticatedRoot = "/u";
 
 const routes = {
+  home: "/",
   authenticated: {
     root: authenticatedRoot,
     dashboard: authenticatedRoot + "/dashboard",
+    settings: authenticatedRoot + "/settings",
+    about: {
+      business: authenticatedRoot + "/about/business",
+      user: authenticatedRoot + "/about/user",
+    },
   },
-  home: "/",
   login: "/login",
   register: "/register",
   notFound: "*",

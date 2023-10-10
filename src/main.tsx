@@ -5,7 +5,16 @@ import { RouterProvider } from "react-router-dom";
 import router from "./navigation";
 import { App, ConfigProvider } from "antd";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchInterval: false,
+      // cacheTime: 0,
+      // staleTime: 0,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
