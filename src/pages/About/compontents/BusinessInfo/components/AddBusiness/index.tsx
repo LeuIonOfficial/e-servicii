@@ -4,8 +4,9 @@ import { formFields } from "./constants.tsx";
 import FormItem from "antd/es/form/FormItem";
 import { useForm } from "antd/es/form/Form";
 import usePostBusiness from "@hooks/usePostBusiness.ts";
-import { CustomDrawer } from "../../../../../../components";
-import { BusinessType } from "../../../../../../models/UserType.ts";
+import { CustomDrawer } from "@components";
+import { BusinessType } from "@models/UserType.ts";
+import usePutUpdateBusiness from "@hooks/usePutUpdateBusiness.ts";
 
 const AddBusiness: FC<{
   open: "create" | "update" | "closed";
@@ -13,31 +14,39 @@ const AddBusiness: FC<{
   business: BusinessType | undefined;
 }> = ({ open, setOpen, business }) => {
   const [form] = useForm();
-  const { postBusiness, response, isSuccess } = usePostBusiness();
-  console.log(response, isSuccess);
+  const { postBusiness } = usePostBusiness(setOpen);
+  const { updateBusiness } = usePutUpdateBusiness(setOpen);
 
   useEffect(() => {
     if (open === "update") {
       form.setFieldsValue(business);
     }
-    console.log(business);
   }, [open]);
 
   return (
     <CustomDrawer
-      title="Add business"
+      title={
+        (open === "create" && "Add Business") ||
+        (open === "update" && "Update Business") ||
+        ""
+      }
       width="700px"
       open={open}
       setOpen={setOpen}
       form={form}
     >
       <div className="flex flex-col items-center">
-        <h1 className="font-bold text-2xl m-10">Add Business</h1>
+        <h1 className="font-bold text-2xl m-10">
+          {(open === "create" && "Add Business") ||
+            (open === "update" && "Update Business")}
+        </h1>
         <Form
           layout="horizontal"
           name="business"
           onFinish={(data) => {
-            open === "create" ? postBusiness(data) : console.log("update");
+            open === "create"
+              ? postBusiness(data)
+              : updateBusiness({ ...data, id: business?.id });
           }}
           form={form}
         >

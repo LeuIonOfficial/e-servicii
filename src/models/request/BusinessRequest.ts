@@ -3,3 +3,7 @@ export interface PostBusinessType {
   description: string;
   phone: string;
 }
+
+export interface UpdateBusinessType extends PostBusinessType {
+  id: number;
+}

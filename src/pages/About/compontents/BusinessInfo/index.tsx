@@ -1,19 +1,18 @@
-import { Card, FloatButton, Space } from "antd";
-import { useContext, useState } from "react";
-import { UserContext } from "@store";
-import AddBusiness from "./components/AddBusiness";
-import { PlusOutlined } from "@ant-design/icons";
-import { BusinessType } from "../../../../models/UserType.ts";
-
+import { Card, FloatButton, Space } from 'antd';
+import { useContext, useState } from 'react';
+import { UserContext } from '@store';
+import AddBusiness from './components/AddBusiness';
+import { PlusOutlined } from '@ant-design/icons';
+import { BusinessType } from '../../../../models/UserType.ts';
 const BusinessInfo = () => {
   const user = useContext(UserContext);
   const [drawerState, setDrawerState] = useState<
-    "create" | "update" | "closed"
-  >("closed");
+    'create' | 'update' | 'closed'
+  >('closed');
   const [business, setBusiness] = useState<BusinessType | undefined>(undefined);
 
   const handleEdit = (index: number) => {
-    setDrawerState("update");
+    setDrawerState('update');
     setBusiness(user?.businesses[index]);
   };
 
@@ -46,7 +45,7 @@ const BusinessInfo = () => {
         className="right-20 bottom-20"
         type="primary"
         icon={<PlusOutlined />}
-        onClick={() => setDrawerState("create")}
+        onClick={() => setDrawerState('create')}
       />
       <AddBusiness
         open={drawerState}

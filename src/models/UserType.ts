@@ -13,4 +13,5 @@ export interface BusinessType {
   name: string;
   description: string;
   phone: string;
+  id: number;
 }

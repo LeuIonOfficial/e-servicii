@@ -14,6 +14,8 @@
       "@services": ["./src/services"],
       "@store": ["./src/store"],
       "@hooks/*": ["./src/hooks/*"],
+      "@models/*": ["./src/models/*"],
+      "@components": ["./src/components"],
     },
 
     /* Bundler mode */

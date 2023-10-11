@@ -1,21 +1,33 @@
 import { Api } from "@services";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { PostBusinessType } from "../models/request/BusinessRequest.ts";
+import { Dispatch, SetStateAction } from "react";
+import { notification } from "antd";
 
-const usePostBusiness = () => {
+const usePostBusiness = (
+  setOpen: Dispatch<SetStateAction<"closed" | "create" | "update">>,
+) => {
+  const client = useQueryClient();
   const mutation = async (data: PostBusinessType) =>
-    Api.business.addBusiness(data);
+    Api.business.postBusiness(data);
 
   const {
-    data: response,
+    data: postResponse,
     mutateAsync: postBusiness,
-    isSuccess,
+    isSuccess: isPosted,
   } = useMutation(mutation);
 
+  if (isPosted) {
+    notification.success({
+      message: "You have successfully added new business",
+    });
+    client.invalidateQueries(["user"]);
+    setOpen("closed");
+  }
+
   return {
-    response,
+    postResponse,
     postBusiness,
-    isSuccess,
   };
 };
 
