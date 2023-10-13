@@ -1,12 +1,19 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import routes from "@routes";
 import { NonAuthLayout, AuthLayout } from "@layouts";
 import { HomePage, NotFound, Dashboard, LoginPage, RegisterPage } from "@pages";
-import { ProfileInfo, BusinessInfo } from "../pages/About";
+import { ProfileInfo, BusinessInfo } from "../pages/Profile";
 import CalendarPage from "../pages/CalendarPage";
+import Services from "../pages/Profile/compontents/Services";
+
+const DashboardRedirect = () => <Navigate to={routes.authenticated.calendar} />;
 
 const router = createBrowserRouter([
+  {
+    index: true,
+    element: <DashboardRedirect />,
+  },
   {
     path: routes.home,
     element: <NonAuthLayout />,
@@ -40,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: routes.authenticated.about.business,
         element: <BusinessInfo />,
+      },
+      {
+        path: routes.authenticated.about.services,
+        element: <Services />,
       },
       {
         path: routes.authenticated.calendar,

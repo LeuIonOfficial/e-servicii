@@ -7,8 +7,9 @@ const routes = {
     dashboard: authenticatedRoot + "/dashboard",
     settings: authenticatedRoot + "/settings",
     about: {
-      business: authenticatedRoot + "/about/business",
+      business: authenticatedRoot + "/about/business/:id?",
       user: authenticatedRoot + "/about/user",
+      services: authenticatedRoot + "/about/services",
     },
     calendar: authenticatedRoot + "/calendar",
   },

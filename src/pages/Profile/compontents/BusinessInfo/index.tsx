@@ -1,46 +1,38 @@
-import { Card, FloatButton, Space } from 'antd';
-import { useContext, useState } from 'react';
+import { Button, FloatButton } from 'antd';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '@store';
 import AddBusiness from './components/AddBusiness';
 import { PlusOutlined } from '@ant-design/icons';
-import { BusinessType } from '../../../../models/UserType.ts';
+import { BusinessType } from '@models/UserType.ts';
+import { useParams } from 'react-router-dom';
 const BusinessInfo = () => {
   const user = useContext(UserContext);
   const [drawerState, setDrawerState] = useState<
     'create' | 'update' | 'closed'
   >('closed');
   const [business, setBusiness] = useState<BusinessType | undefined>(undefined);
-
-  const handleEdit = (index: number) => {
+  const { id } = useParams();
+  const handleEdit = () => {
     setDrawerState('update');
-    setBusiness(user?.businesses[index]);
+    setBusiness(business);
   };
+
+  useEffect(() => {
+    !!id && setBusiness(user?.businesses.find((el) => el.id === +id));
+  }, [id, user?.businesses]);
 
   return (
     <>
-      <Space direction="horizontal" size={24} className="flex flex-wrap">
-        {user?.businesses.map((business, index) => {
-          console.log(business);
-          return (
-            <Card
-              title={business.name}
-              extra={
-                <span
-                  className="cursor-pointer"
-                  onClick={() => handleEdit(index)}
-                >
-                  Edit
-                </span>
-              }
-              key={index}
-              className="w-[300px] h-[300px]"
-            >
-              <p>{business.description}</p>
-              <p>{business.phone}</p>
-            </Card>
-          );
-        })}
-      </Space>
+      <div>
+        <div className="flex w-full h-full flex-col ">
+          <div>{business?.name}</div>
+          <div>{business?.description}</div>
+          <div>{business?.phone}</div>
+          <div>
+            <Button onClick={handleEdit}>Edit</Button>
+          </div>
+        </div>
+      </div>
       <FloatButton
         className="right-20 bottom-20"
         type="primary"

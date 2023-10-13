@@ -6,9 +6,11 @@ import {
 import { useContext } from "react";
 import { UserContext } from "@store";
 import routes from "@routes";
+import { generatePath, useNavigate } from "react-router-dom";
 
 export const useMenuItems = () => {
   const user = useContext(UserContext);
+  const navigate = useNavigate();
   return [
     {
       key: "profile",
@@ -16,38 +18,63 @@ export const useMenuItems = () => {
       label: <div>Profile</div>,
       children: [
         {
-          key: routes.authenticated.about.user,
+          key: "user",
           label: (
-            <div className="flex justify-between">
+            <div
+              className="flex justify-between"
+              onClick={() => navigate(routes.authenticated.about.user)}
+            >
               <span>User</span>
               <span>{user?.name}</span>
             </div>
           ),
         },
         {
-          key: routes.authenticated.about.business,
+          key: "business",
           label: (
             <div className="flex justify-between m-0">
               <span>Business</span>
               <span>{user?.businesses.length}</span>
             </div>
           ),
-        },
-        {
-          key: routes.home,
-          label: <span>Logout</span>,
+          children: user?.businesses.map((el) => {
+            return {
+              key: `business ${el.id}`,
+              label: (
+                <div
+                  onClick={() =>
+                    navigate(
+                      generatePath(routes.authenticated.about.business, {
+                        id: el.id,
+                      }),
+                    )
+                  }
+                >
+                  <span>{el.name}</span>
+                </div>
+              ),
+            };
+          }),
         },
       ],
     },
     {
-      key: routes.authenticated.dashboard,
+      key: "dashboard",
       icon: <DashboardOutlined />,
-      label: <span>Dashboard</span>,
+      label: (
+        <div onClick={() => navigate(routes.authenticated.dashboard)}>
+          Dashboard
+        </div>
+      ),
     },
     {
-      key: routes.authenticated.calendar,
+      key: "calendar",
       icon: <CalendarOutlined />,
-      label: "Calendar",
+      label: (
+        <div onClick={() => navigate(routes.authenticated.calendar)}>
+          Calendar
+        </div>
+      ),
     },
   ];
 };

@@ -8,7 +8,6 @@ import { UserContext } from "@store";
 
 const AuthLayout = () => {
   const { profile, isSuccess, isFetching } = useGetProfile();
-  console.log(profile);
 
   if (isFetching) {
     return (
