@@ -5,11 +5,12 @@ import style from "./style.module.scss";
 import { FC, useState } from "react";
 
 import { Menu } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const AuthSider: FC = ({}) => {
   const items = useMenuItems();
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Sider
@@ -23,6 +24,7 @@ const AuthSider: FC = ({}) => {
         mode="inline"
         items={items}
         onClick={(e) => navigate(e.key)}
+        defaultSelectedKeys={[location.pathname]}
       />
     </Sider>
   );

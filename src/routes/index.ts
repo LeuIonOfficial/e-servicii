@@ -10,6 +10,7 @@ const routes = {
       business: authenticatedRoot + "/about/business",
       user: authenticatedRoot + "/about/user",
     },
+    calendar: authenticatedRoot + "/calendar",
   },
   login: "/login",
   register: "/register",

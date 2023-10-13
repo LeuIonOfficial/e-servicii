@@ -1,6 +1,6 @@
 import {
+  CalendarOutlined,
   DashboardOutlined,
-  UploadOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ export const useMenuItems = () => {
     {
       key: "profile",
       icon: <UserOutlined />,
-      label: <span>Profile</span>,
+      label: <div>Profile</div>,
       children: [
         {
           key: routes.authenticated.about.user,
@@ -40,14 +40,14 @@ export const useMenuItems = () => {
       ],
     },
     {
-      key: "dashboard",
+      key: routes.authenticated.dashboard,
       icon: <DashboardOutlined />,
       label: <span>Dashboard</span>,
     },
     {
-      key: "3",
-      icon: <UploadOutlined />,
-      label: "nav 3",
+      key: routes.authenticated.calendar,
+      icon: <CalendarOutlined />,
+      label: "Calendar",
     },
   ];
 };

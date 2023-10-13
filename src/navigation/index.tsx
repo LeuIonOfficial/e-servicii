@@ -4,6 +4,7 @@ import routes from "@routes";
 import { NonAuthLayout, AuthLayout } from "@layouts";
 import { HomePage, NotFound, Dashboard, LoginPage, RegisterPage } from "@pages";
 import { ProfileInfo, BusinessInfo } from "../pages/About";
+import CalendarPage from "../pages/CalendarPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: routes.authenticated.about.business,
         element: <BusinessInfo />,
+      },
+      {
+        path: routes.authenticated.calendar,
+        element: <CalendarPage />,
       },
     ],
   },

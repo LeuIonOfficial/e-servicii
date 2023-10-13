@@ -4,3 +4,4 @@ export { default as NotFound } from "./NotFound";
 export { default as Dashboard } from "./Dashboard";
 export { default as LoginPage } from "./AuthPages/LoginPage";
 export { default as RegisterPage } from "./AuthPages/RegisterPage";
+export { default as CalendarPage } from "./CalendarPage";
