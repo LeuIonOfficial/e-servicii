@@ -6,3 +6,4 @@ export { default as LoginPage } from "./AuthPages/LoginPage";
 export { default as RegisterPage } from "./AuthPages/RegisterPage";
 export { default as CalendarPage } from "./CalendarPage";
 export { default as ProfilePage } from "./Profile";
+export { default as AppointmentPage } from "./Appointment";

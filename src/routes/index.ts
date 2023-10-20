@@ -8,6 +8,7 @@ const routes = {
     settings: authenticatedRoot + "/settings",
     about: authenticatedRoot + "/profile",
     calendar: authenticatedRoot + "/calendar",
+    appointment: authenticatedRoot + "/appointment",
   },
   login: "/login",
   register: "/register",

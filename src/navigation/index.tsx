@@ -10,6 +10,7 @@ import {
   RegisterPage,
   ProfilePage,
   CalendarPage,
+  AppointmentPage,
 } from "@pages";
 
 // const DashboardRedirect = () => <Navigate to={routes.authenticated.calendar} />;
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: routes.authenticated.calendar,
         element: <CalendarPage />,
+      },
+      {
+        path: routes.authenticated.appointment,
+        element: <AppointmentPage />,
       },
     ],
   },
