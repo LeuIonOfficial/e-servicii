@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider } from "react-router-dom";
 import router from "./navigation";
 import { App, ConfigProvider } from "antd";
+import "./index.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -11,25 +11,28 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       refetchInterval: false,
       retry: false,
-      // cacheTime: 0,
-      // staleTime: 0,
     },
   },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
-    <ConfigProvider
-      theme={{
-        token: {
-          fontFamily: "Montserrat, sans-serif",
-          colorPrimary: "#2979FF",
-        },
-      }}
-    >
-      <App>
+    <App>
+      <ConfigProvider
+        theme={{
+          components: {
+            Steps: {
+              iconSize: 40,
+              iconFontSize: 18,
+              iconSizeSM: 40,
+              colorPrimary: "#4f46e5",
+            },
+            Button: {},
+          },
+        }}
+      >
         <RouterProvider router={router} />
-      </App>
-    </ConfigProvider>
+      </ConfigProvider>
+    </App>
   </QueryClientProvider>,
 );

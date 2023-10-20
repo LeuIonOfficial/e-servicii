@@ -2,7 +2,7 @@ import { $api } from "@http";
 import {
   PostBusinessType,
   UpdateBusinessType,
-} from "../../models/request/BusinessRequest.ts";
+} from "@models/request/BusinessRequest.ts";
 
 export default class BusinessService {
   async postBusiness(data: PostBusinessType) {

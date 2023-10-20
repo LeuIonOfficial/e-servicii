@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.6",
     "@types/node": "^20.8.2",
     "antd": "^5.9.4",
     "axios": "^1.5.1",
@@ -20,7 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -34,7 +38,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.31",
     "sass": "^1.69.1",
-    "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
