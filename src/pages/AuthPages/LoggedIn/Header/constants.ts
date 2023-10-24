@@ -6,10 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 export const navigation = [
   { name: "Dashboard", href: routes.authenticated.dashboard, current: false },
-  { name: "Calendar", href: routes.authenticated.calendar, current: false },
   {
     name: "Appointment",
     href: routes.authenticated.appointment,
+    current: false,
+  },
+  {
+    name: "Business",
+    href: routes.authenticated.business,
     current: false,
   },
 ];

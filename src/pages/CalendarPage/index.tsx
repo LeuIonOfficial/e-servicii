@@ -130,7 +130,7 @@ const days = [
 ];
 const selectedDay = days.find((day) => day.isSelected);
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 

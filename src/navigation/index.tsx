@@ -5,12 +5,12 @@ import { NonAuthLayout, AuthLayout } from "@layouts";
 import {
   HomePage,
   NotFound,
-  Dashboard,
   LoginPage,
   RegisterPage,
   ProfilePage,
   CalendarPage,
   AppointmentPage,
+  BusinessPage,
 } from "@pages";
 
 // const DashboardRedirect = () => <Navigate to={routes.authenticated.calendar} />;
@@ -43,20 +43,20 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        path: routes.authenticated.dashboard,
-        element: <Dashboard />,
-      },
-      {
         path: routes.authenticated.about,
         element: <ProfilePage />,
       },
       {
-        path: routes.authenticated.calendar,
+        path: routes.authenticated.dashboard,
         element: <CalendarPage />,
       },
       {
         path: routes.authenticated.appointment,
         element: <AppointmentPage />,
+      },
+      {
+        path: routes.authenticated.business,
+        element: <BusinessPage />,
       },
     ],
   },

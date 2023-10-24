@@ -5,10 +5,9 @@ const routes = {
   authenticated: {
     root: authenticatedRoot,
     dashboard: authenticatedRoot + "/dashboard",
-    settings: authenticatedRoot + "/settings",
     about: authenticatedRoot + "/profile",
-    calendar: authenticatedRoot + "/calendar",
     appointment: authenticatedRoot + "/appointment",
+    business: authenticatedRoot + "/business",
   },
   login: "/login",
   register: "/register",

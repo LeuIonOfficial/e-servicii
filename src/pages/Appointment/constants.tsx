@@ -1,10 +1,18 @@
-export const useGetAppointments = () => {
+import useGetAppointments from "@hooks/useGetAppointments";
+
+export const useReadAppointments = () => {
+  const { isSuccess, isFetching, appointments } = useGetAppointments();
+
+  console.log(appointments);
+  console.log(isSuccess);
+  console.log(isFetching);
+
   return [
     {
-      name: "Lindsay Walton",
-      title: "Front-end Developer",
-      email: "lindsay.walton@example.com",
-      role: "Member",
+      client_name: "Lindsay Walton",
+      hour: "4:00 PM",
+      date: "March 22, 2021",
+      service: "Haircut",
     },
   ];
 };

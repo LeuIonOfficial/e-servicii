@@ -6,7 +6,7 @@ import TextArea from "antd/es/input/TextArea";
 import usePutUpdateBusiness from "@hooks/usePutUpdateBusiness.ts";
 import { useForm } from "antd/es/form/Form";
 
-const BusinessSection = () => {
+const BusinessProfile = () => {
   const user = useContext(UserContext);
   const businessID = user?.businesses[0].id;
   const [form] = useForm();
@@ -175,4 +175,4 @@ const BusinessSection = () => {
   );
 };
 
-export default BusinessSection;
+export default BusinessProfile;

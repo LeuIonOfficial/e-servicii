@@ -1,10 +1,10 @@
 import { PageTemplate } from "@components";
-import { useGetAppointments } from "./constants.tsx";
+import { useReadAppointments } from "./constants.tsx";
 import { useState } from "react";
 import CreateAppointmentDrawer from "./components/CreateAppointmentDrawer";
 
 export default function Appointment() {
-  const appointments = useGetAppointments();
+  const appointments = useReadAppointments();
   const [drawerState, setDrawerState] = useState<"open" | "closed" | "update">(
     "closed",
   );
@@ -42,25 +42,31 @@ export default function Appointment() {
                         scope="col"
                         className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                       >
-                        Name
+                        Status
+                      </th>
+                      <th
+                        scope="col"
+                        className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      >
+                        Client Name
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Title
+                        Hour
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Email
+                        Date
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Role
+                        Service
                       </th>
                       <th
                         scope="col"
@@ -71,26 +77,30 @@ export default function Appointment() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
-                    {appointments.map((person) => (
-                      <tr key={person.email}>
+                    {appointments.map((appointment) => (
+                      <tr key={appointment.client_name}>
+                        <td className="whitespace-nowrap py-4 pl-4 text-sm font-medium text-gray-900 sm:pl-6"></td>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                          {person.name}
+                          {appointment.client_name}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {person.title}
+                          {appointment.hour}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {person.email}
+                          {appointment.date}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {person.role}
+                          {appointment.service}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <span
-                            className="text-indigo-600 hover:text-indigo-900"
+                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
                             onClick={() => setDrawerState("update")}
                           >
-                            Edit<span className="sr-only">, {person.name}</span>
+                            Edit
+                            <span className="sr-only">
+                              , {appointment.client_name}
+                            </span>
                           </span>
                         </td>
                       </tr>

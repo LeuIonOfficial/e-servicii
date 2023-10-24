@@ -28,6 +28,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               colorPrimary: "#4f46e5",
             },
             Button: {},
+            Tabs: {
+              itemColor: "#6B7280",
+              itemSelectedColor: "#111827",
+              itemHoverColor: "#111827",
+              inkBarColor: "#4f46e5",
+              fontWeightStrong: 300,
+            },
           },
         }}
       >
